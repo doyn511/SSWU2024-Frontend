@@ -46,9 +46,11 @@ const globalCss = css`
 
   input,
   button {
-    outline: none;
+    padding: 0;
+    margin: 0;
 
     background-color: transparent;
+    outline: none;
   }
 
   input {
