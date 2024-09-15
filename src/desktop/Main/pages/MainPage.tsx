@@ -5,7 +5,7 @@ function MainPage() {
   return (
     <div css={mainContainer}>
       <IcListRight />
-      <span css={text(false)}>메인페이지래요</span>
+      <span css={text(false)}>데스크탑 메인페이지래요</span>
     </div>
   );
 }

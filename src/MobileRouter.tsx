@@ -3,8 +3,8 @@ import MainPage from './mobile/Main/pages/MainPage';
 
 const router = createBrowserRouter([{ path: '/', element: <MainPage /> }]);
 
-const Router = () => {
+const MobileRouter = () => {
   return <RouterProvider router={router} />;
 };
 
-export default Router;
+export default MobileRouter;
