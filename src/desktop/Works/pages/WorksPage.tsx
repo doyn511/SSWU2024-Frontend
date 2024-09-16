@@ -1,15 +1,15 @@
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { IcListRight } from '../../assets/icon';
 import { ImgBg2Web } from '../../assets/image';
-import { STUDIO_DETAILS } from '../constants/studioDetail';
+import { STUDIO_DETAILS } from '../constants/StudioDetail';
 
 const WorksPage = () => {
   const [hoveredStudio, setHoveredStudio] = useState('');
   return (
     <section css={worksPageContainer}>
-      <div css={imgContainer}>
+      <div css={bgContainer}>
         <ImgBg2Web />
       </div>
 
@@ -17,24 +17,27 @@ const WorksPage = () => {
 
       <article css={totalStudioContainer}>
         {STUDIO_DETAILS.map((detail, idx) => {
-          const { studio, description } = detail;
+          const { studio, description, img } = detail;
           const isHoveredStudio = studio === hoveredStudio;
           return (
-            <article key={idx} css={studioContainer}>
-              <span
-                css={studioName(isHoveredStudio)}
-                onMouseEnter={() => setHoveredStudio(studio)}
-              >
-                {studio}
-              </span>
+            <React.Fragment key={idx}>
+              {isHoveredStudio && <div css={imgContainer}>{img}</div>}
+              <article css={studioContainer}>
+                <span
+                  css={studioName(isHoveredStudio)}
+                  onMouseEnter={() => setHoveredStudio(studio)}
+                >
+                  {studio}
+                </span>
 
-              {isHoveredStudio && (
-                <div css={hoveredContainer}>
-                  <IcListRight />
-                  <p css={studioDescription}>{description}</p>
-                </div>
-              )}
-            </article>
+                {isHoveredStudio && (
+                  <div css={hoveredContainer}>
+                    <IcListRight />
+                    <p css={studioDescription}>{description}</p>
+                  </div>
+                )}
+              </article>
+            </React.Fragment>
           );
         })}
       </article>
@@ -52,7 +55,7 @@ const worksPageContainer = css`
   padding: 15.2rem 0 14.8rem 6rem;
 `;
 
-const imgContainer = css`
+const bgContainer = css`
   position: absolute;
   top: 5.2rem;
   z-index: -1;
@@ -101,4 +104,10 @@ const studioDescription = css`
 
   ${fonts.desktop_body_reg_16};
   word-break: keep-all;
+`;
+
+const imgContainer = css`
+  position: absolute;
+  right: 6rem;
+  bottom: 10rem;
 `;
