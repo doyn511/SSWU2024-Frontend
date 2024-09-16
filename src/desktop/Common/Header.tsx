@@ -1,13 +1,19 @@
 import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GNB } from '../../constants/headerConst';
 import { colors, fonts } from '../../styles/theme';
 import { IcGnbGraphic } from '../assets/icon';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleClickGnbGraphic = () => {
+    navigate('/');
+  };
+
   return (
     <header css={headerContainer}>
-      <IcGnbGraphic />
+      <IcGnbGraphic onClick={handleClickGnbGraphic} />
       <ul css={gnbContainer}>
         {GNB.map(({ url, name }) => {
           return (
