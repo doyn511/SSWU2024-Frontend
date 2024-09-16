@@ -1,22 +1,27 @@
 import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../styles/theme';
 import { IcGnbGraphic } from '../assets/icon';
 
 const Header = () => {
-  const GNB = ['Works', 'Designers', 'Displays'];
+  const GNB = [
+    { url: '/works', name: 'Works' },
+    { url: '/designers', name: 'Designers' },
+    { url: '/displays', name: 'Displays' },
+  ];
 
   return (
     <header css={headerContainer}>
       <IcGnbGraphic />
-      <div css={gnbContainer}>
-        {GNB.map((category) => {
+      <ul css={gnbContainer}>
+        {GNB.map(({ url, name }) => {
           return (
-            <button type="button" key={category} css={gnb}>
-              {category}
-            </button>
+            <li key={url} css={gnb}>
+              <Link to={url}>{name}</Link>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </header>
   );
 };
