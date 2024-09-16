@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
+import { STUDIO_DETAILS } from '../../../constants/StudioDetail';
 import { colors, fonts } from '../../../styles/theme';
 import { IcListRight } from '../../assets/icon';
 import { ImgBg2Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
-import { STUDIO_DETAILS } from '../constants/StudioDetail';
 
 const WorksPage = () => {
   const [hoveredStudio, setHoveredStudio] = useState('');
@@ -17,23 +17,23 @@ const WorksPage = () => {
 
         <p css={title}>Works</p>
 
-      <article
-        css={totalStudioContainer}
-        onMouseLeave={() => setHoveredStudio('')}
-      >
-        {STUDIO_DETAILS.map((detail, idx) => {
-          const { studio, description, img } = detail;
-          const isHoveredStudio = studio === hoveredStudio;
-          return (
-            <React.Fragment key={idx}>
-              {isHoveredStudio && <div css={imgContainer}>{img}</div>}
-              <article css={studioContainer}>
-                <span
-                  css={studioName(isHoveredStudio)}
-                  onMouseEnter={() => setHoveredStudio(studio)}
-                >
-                  {studio}
-                </span>
+        <article
+          css={totalStudioContainer}
+          onMouseLeave={() => setHoveredStudio('')}
+        >
+          {STUDIO_DETAILS.map((detail, idx) => {
+            const { studio, description, img } = detail;
+            const isHoveredStudio = studio === hoveredStudio;
+            return (
+              <React.Fragment key={idx}>
+                {isHoveredStudio && <div css={imgContainer}>{img}</div>}
+                <article css={studioContainer}>
+                  <span
+                    css={studioName(isHoveredStudio)}
+                    onMouseEnter={() => setHoveredStudio(studio)}
+                  >
+                    {studio}
+                  </span>
 
                   {isHoveredStudio && (
                     <div css={hoveredContainer}>

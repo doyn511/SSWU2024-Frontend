@@ -6,7 +6,7 @@ import {
   ImgSymbolSpaceDirection,
   ImgSymbolStudioA,
   ImgSymbolStudioB,
-} from '../../assets/image';
+} from '../desktop/assets/image';
 
 export const STUDIO_DETAILS = [
   {
