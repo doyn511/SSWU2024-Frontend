@@ -15,7 +15,10 @@ const WorksPage = () => {
 
       <p css={title}>Works</p>
 
-      <article css={totalStudioContainer}>
+      <article
+        css={totalStudioContainer}
+        onMouseLeave={() => setHoveredStudio('')}
+      >
         {STUDIO_DETAILS.map((detail, idx) => {
           const { studio, description, img } = detail;
           const isHoveredStudio = studio === hoveredStudio;
