@@ -1,15 +1,10 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
+import { GNB } from '../../constants/headerConst';
 import { colors, fonts } from '../../styles/theme';
 import { IcGnbGraphic } from '../assets/icon';
 
 const Header = () => {
-  const GNB = [
-    { url: '/works', name: 'Works' },
-    { url: '/designers', name: 'Designers' },
-    { url: '/displays', name: 'Displays' },
-  ];
-
   return (
     <header css={headerContainer}>
       <IcGnbGraphic />
