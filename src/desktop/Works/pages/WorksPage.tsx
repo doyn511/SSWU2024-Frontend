@@ -3,17 +3,19 @@ import React, { useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { IcListRight } from '../../assets/icon';
 import { ImgBg2Web } from '../../assets/image';
+import PageLayout from '../../Common/PageLayout';
 import { STUDIO_DETAILS } from '../constants/StudioDetail';
 
 const WorksPage = () => {
   const [hoveredStudio, setHoveredStudio] = useState('');
   return (
-    <section css={worksPageContainer}>
-      <div css={bgContainer}>
-        <ImgBg2Web />
-      </div>
+    <PageLayout>
+      <section css={worksPageContainer}>
+        <div css={bgContainer}>
+          <ImgBg2Web />
+        </div>
 
-      <p css={title}>Works</p>
+        <p css={title}>Works</p>
 
       <article
         css={totalStudioContainer}
@@ -33,18 +35,19 @@ const WorksPage = () => {
                   {studio}
                 </span>
 
-                {isHoveredStudio && (
-                  <div css={hoveredContainer}>
-                    <IcListRight />
-                    <p css={studioDescription}>{description}</p>
-                  </div>
-                )}
-              </article>
-            </React.Fragment>
-          );
-        })}
-      </article>
-    </section>
+                  {isHoveredStudio && (
+                    <div css={hoveredContainer}>
+                      <IcListRight />
+                      <p css={studioDescription}>{description}</p>
+                    </div>
+                  )}
+                </article>
+              </React.Fragment>
+            );
+          })}
+        </article>
+      </section>
+    </PageLayout>
   );
 };
 
