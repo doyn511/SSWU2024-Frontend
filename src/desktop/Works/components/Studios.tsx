@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
-import { STUDIO_DETAILS } from '../../../constants/StudioDetail';
+
+import { STUDIO_DETAILS } from '../../../constants/studioDetail';
 import { colors, fonts } from '../../../styles/theme';
 import HoveredStudioImg from './HoveredStudioImg';
 import HoveredStudioInfo from './HoveredStudioInfo';
@@ -14,11 +15,12 @@ const Studios = () => {
       onMouseLeave={() => setHoveredStudio('')}
     >
       {STUDIO_DETAILS.map((detail, idx) => {
-        const { studio, description, img } = detail;
+        const { studio, description, imgsrc } = detail;
         const isHoveredStudio = studio === hoveredStudio;
+
         return (
           <React.Fragment key={idx}>
-            {isHoveredStudio && <HoveredStudioImg img={img} />}
+            {isHoveredStudio && <HoveredStudioImg imgsrc={imgsrc} />}
             <article css={studioContainer}>
               <span
                 css={studioName(isHoveredStudio)}
@@ -41,10 +43,9 @@ const Studios = () => {
 export default Studios;
 
 const totalStudioContainer = css`
-  display: flex;
-  gap: 3.6rem;
-  justify-content: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  row-gap: calc(100vh / 22.5);
 `;
 
 const studioContainer = css`
@@ -54,7 +55,7 @@ const studioContainer = css`
 `;
 
 const studioName = (isHoveredStudio: boolean) => css`
-  width: 22.9rem;
+  min-width: 22.9rem;
 
   color: ${isHoveredStudio ? colors.pink300 : colors.gray900};
   ${fonts.desktop_title_reg_24};
