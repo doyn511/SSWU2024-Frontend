@@ -23,7 +23,9 @@ const hoveredContainer = css`
 const studioDescription = css`
   position: absolute;
 
-  width: 65rem;
+  min-width: 65rem;
+
+  width: calc(100% - 39.8rem);
   margin-left: 7.3rem;
 
   color: ${colors.gray900};

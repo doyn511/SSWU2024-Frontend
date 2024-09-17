@@ -8,9 +8,7 @@ const WorksPage = () => {
   return (
     <PageLayout>
       <section css={worksPageContainer}>
-        <div css={bgContainer}>
-          <ImgBg2Web />
-        </div>
+        <img src={ImgBg2Web} css={bg} />
 
         <p css={title}>Works</p>
         <Studios />
@@ -26,17 +24,23 @@ const worksPageContainer = css`
   flex-direction: column;
   position: relative;
 
-  padding: 15.2rem 0 14.8rem 6rem;
+  width: 100%;
+  height: 100vh;
+  padding: calc(100vh / 5.33) calc(100vh / 2.03) calc(100vh / 5.47)
+    calc(100vh / 13.5);
 `;
 
-const bgContainer = css`
+const bg = css`
   position: absolute;
   top: 5.2rem;
+  left: 0;
   z-index: -1;
+
+  height: calc(100vh - 5.2rem);
 `;
 
 const title = css`
-  margin-bottom: 7.2rem;
+  margin-bottom: calc(100vh / 11.25);
 
   color: ${colors.gray900};
   ${fonts.desktop_title_reg_54};
