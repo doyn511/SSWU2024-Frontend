@@ -1,13 +1,10 @@
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
-import { STUDIO_DETAILS } from '../../../constants/StudioDetail';
 import { colors, fonts } from '../../../styles/theme';
-import { IcListRight } from '../../assets/icon';
 import { ImgBg2Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
+import Studios from '../components/Studios';
 
 const WorksPage = () => {
-  const [hoveredStudio, setHoveredStudio] = useState('');
   return (
     <PageLayout>
       <section css={worksPageContainer}>
@@ -16,36 +13,7 @@ const WorksPage = () => {
         </div>
 
         <p css={title}>Works</p>
-
-        <article
-          css={totalStudioContainer}
-          onMouseLeave={() => setHoveredStudio('')}
-        >
-          {STUDIO_DETAILS.map((detail, idx) => {
-            const { studio, description, img } = detail;
-            const isHoveredStudio = studio === hoveredStudio;
-            return (
-              <React.Fragment key={idx}>
-                {isHoveredStudio && <div css={imgContainer}>{img}</div>}
-                <article css={studioContainer}>
-                  <span
-                    css={studioName(isHoveredStudio)}
-                    onMouseEnter={() => setHoveredStudio(studio)}
-                  >
-                    {studio}
-                  </span>
-
-                  {isHoveredStudio && (
-                    <div css={hoveredContainer}>
-                      <IcListRight />
-                      <p css={studioDescription}>{description}</p>
-                    </div>
-                  )}
-                </article>
-              </React.Fragment>
-            );
-          })}
-        </article>
+        <Studios />
       </section>
     </PageLayout>
   );
@@ -72,48 +40,4 @@ const title = css`
 
   color: ${colors.gray900};
   ${fonts.desktop_title_reg_54};
-`;
-
-const totalStudioContainer = css`
-  display: flex;
-  gap: 3.6rem;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const studioContainer = css`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
-const studioName = (isHoveredStudio: boolean) => css`
-  width: 22.9rem;
-
-  color: ${isHoveredStudio ? colors.pink300 : colors.gray900};
-  ${fonts.desktop_title_reg_24};
-`;
-
-const hoveredContainer = css`
-  display: flex;
-
-  margin-left: 1.2rem;
-`;
-
-const studioDescription = css`
-  position: absolute;
-
-  width: 65rem;
-  margin-left: 7.3rem;
-
-  color: ${colors.gray900};
-
-  ${fonts.desktop_body_reg_16};
-  word-break: keep-all;
-`;
-
-const imgContainer = css`
-  position: absolute;
-  right: 6rem;
-  bottom: 10rem;
 `;
